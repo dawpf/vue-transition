@@ -1,32 +1,68 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="one">
+      <div>
+        <router-link to="/aaa">下一层</router-link>
+      </div>
+      <h1>第一层</h1>
     </div>
-    <router-view />
+    <transition name="kuai">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
+
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
 <style lang="less">
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body,
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.one {
+  height: 100%;
+  background-color: yellow;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.kuai-enter-active,
+.kuai-leave-active {
+  transition: all 0.3s;
+}
+.kuai-enter,
+.kuai-leave-to {
+  transform: translateX(100%);
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.man-enter-active,
+.man-leave-active {
+  transition: all 1s;
+}
+.man-enter,
+.man-leave-to {
+  transform: translateX(100%);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s;
+  opacity: 1;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
